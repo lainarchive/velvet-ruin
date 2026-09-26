@@ -39,12 +39,87 @@ const PORTRAIT_TEXTURES := {
 	"%PlayerPortrait": "res://assets/art/characters/protagonist/signatory_bust.png",
 }
 
+## Presentation-only: how many enemy slots to show. CombatState is still
+## single-enemy; this drives layout and visibility of the enemy stack alone.
+## Multi-enemy combat can later feed a real count into apply_enemy_formation().
+const ENEMY_DISPLAY_COUNT := 1
+
+## Enemy presentation slots, in formation order. Slot 0 keeps the original node
+## names because the 1C playtest resolves them by unique name; slots 2 and 3 are
+## dormant duplicates that hold no art and stay hidden until their count is used.
+const ENEMY_SLOT_PATHS := [
+	{
+		"portrait": "EnemyPortrait",
+		"identity": "EnemyIdentity",
+		"intent": "IntentRow",
+		"hp_bar": "EnemyIdentity/EnemyHPRow/EnemyHPBar",
+		"name": "EnemyIdentity/EnemyNameLabel",
+	},
+	{
+		"portrait": "EnemyPortrait2",
+		"identity": "EnemyIdentity2",
+		"intent": "IntentRow2",
+		"hp_bar": "EnemyIdentity2/EnemyHPRow2/EnemyHPBar2",
+		"name": "EnemyIdentity2/EnemyNameLabel2",
+	},
+	{
+		"portrait": "EnemyPortrait3",
+		"identity": "EnemyIdentity3",
+		"intent": "IntentRow3",
+		"hp_bar": "EnemyIdentity3/EnemyHPRow3/EnemyHPBar3",
+		"name": "EnemyIdentity3/EnemyNameLabel3",
+	},
+]
+
+
+## Positions and reveals N enemy presentation slots using the shared formation
+## calculation. Purely visual: no combat state is read or written.
+func apply_enemy_formation(count: int) -> void:
+	var slots := EnemyFormation.layout(count)
+	for i in ENEMY_SLOT_PATHS.size():
+		var paths: Dictionary = ENEMY_SLOT_PATHS[i]
+		var portrait := get_node_or_null(paths["portrait"]) as Control
+		var identity := get_node_or_null(paths["identity"]) as Control
+		var intent := get_node_or_null(paths["intent"]) as Control
+		var hp_bar := get_node_or_null(paths["hp_bar"]) as Control
+		var name_label := get_node_or_null(paths["name"]) as Label
+		var used: bool = i < slots.size()
+		# Portrait, identity and intent move as one unit: same rect set, same
+		# visibility, revealed or hidden together.
+		for node in [portrait, identity, intent]:
+			if node != null:
+				node.visible = used
+		if hp_bar != null:
+			hp_bar.visible = used
+		if not used or portrait == null:
+			continue
+		var slot: Dictionary = slots[i]
+		# Size the slot's content BEFORE placing it. A container clamps its own
+		# size up to its content minimum, so shrinking the bar and the name
+		# afterwards would leave the identity box stranded at its old width.
+		if hp_bar != null:
+			hp_bar.custom_minimum_size = Vector2(slot["hp_bar_width"], hp_bar.custom_minimum_size.y)
+		if name_label != null:
+			# Narrow slots scale the name so it cannot overflow, never below the
+			# 10px legibility floor.
+			name_label.add_theme_font_size_override("font_size", int(slot["name_font_size"]))
+		_place(portrait, slot["portrait"])
+		_place(identity, slot["identity"])
+		_place(intent, slot["intent"])
+
+
+func _place(node: Control, rect: Rect2) -> void:
+	node.position = rect.position
+	node.size = rect.size
+
+
 func _ready() -> void:
 	_end_button.pressed.connect(_on_end_turn_pressed)
 	_restart_button.pressed.connect(_restart)
 	_player_portrait = get_node_or_null("%PlayerPortrait")
 	if _player_portrait != null:
 		_player_home = _player_portrait.position
+	apply_enemy_formation(ENEMY_DISPLAY_COUNT)
 	_drop_in_portraits()
 	_start_state()
 

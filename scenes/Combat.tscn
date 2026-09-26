@@ -62,10 +62,10 @@ script = ExtResource("5_stage")
 
 [node name="SignatoryFigure" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 424.0
-offset_top = 110.0
-offset_right = 664.0
-offset_bottom = 470.0
+offset_left = 462.0
+offset_top = 44.0
+offset_right = 758.0
+offset_bottom = 488.0
 mouse_filter = 2
 texture = ExtResource("6_signatory")
 expand_mode = 1
@@ -91,10 +91,10 @@ uppercase = true
 [node name="IntentRow" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 830.0
-offset_top = 444.0
-offset_right = 1150.0
-offset_bottom = 468.0
+offset_left = 936.0
+offset_top = 392.0
+offset_right = 1236.0
+offset_bottom = 416.0
 mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 2
@@ -116,10 +116,10 @@ text = "STRIKE — 7"
 [node name="EnemyPortrait" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 830.0
-offset_top = 66.0
-offset_right = 1150.0
-offset_bottom = 376.0
+offset_left = 936.0
+offset_top = 56.0
+offset_right = 1236.0
+offset_bottom = 326.0
 mouse_filter = 2
 script = ExtResource("3_portrait")
 mode = "enemy"
@@ -127,10 +127,10 @@ mode = "enemy"
 [node name="EnemyIdentity" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 830.0
-offset_top = 384.0
-offset_right = 1150.0
-offset_bottom = 436.0
+offset_left = 936.0
+offset_top = 334.0
+offset_right = 1236.0
+offset_bottom = 386.0
 mouse_filter = 2
 theme_override_constants/separation = 4
 
@@ -169,13 +169,173 @@ theme_override_colors/font_color = Color(0.9, 0.88, 0.9, 1)
 theme_override_font_sizes/font_size = 14
 text = "40 / 40"
 
+; --- Enemy presentation slots 2 and 3 -------------------------------------
+; Dormant placeholders for a future multi-enemy formation. They hold no art and
+; are hidden by combat_ui.gd whenever the displayed enemy count is below their
+; index. Positions are assigned at runtime by EnemyFormation; the offsets here
+; are only the count=1 resting place so the scene opens correctly in the editor.
+
+[node name="EnemyPortrait2" type="Control" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 936.0
+offset_top = 56.0
+offset_right = 1236.0
+offset_bottom = 306.0
+mouse_filter = 2
+script = ExtResource("3_portrait")
+mode = "enemy"
+
+[node name="EnemyIdentity2" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 936.0
+offset_top = 312.0
+offset_right = 1236.0
+offset_bottom = 366.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="EnemyNameLabel2" type="Label" parent="EnemyIdentity2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "SECOND PARTY"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="EnemyHPRow2" type="HBoxContainer" parent="EnemyIdentity2"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="EnemyHPBar2" type="ProgressBar" parent="EnemyIdentity2/EnemyHPRow2"]
+custom_minimum_size = Vector2(150, 8)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("sb_fill_back")
+theme_override_styles/fill = SubResource("sb_fill")
+max_value = 40.0
+value = 40.0
+show_percentage = false
+
+[node name="EnemyHPText2" type="Label" parent="EnemyIdentity2/EnemyHPRow2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "40 / 40"
+
+[node name="IntentRow2" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 936.0
+offset_top = 370.0
+offset_right = 1236.0
+offset_bottom = 392.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="IntentCaption2" type="Label" parent="IntentRow2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.4, 0.45, 1)
+theme_override_font_sizes/font_size = 11
+text = "INTENT"
+uppercase = true
+
+[node name="IntentLabel2" type="Label" parent="IntentRow2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.278431, 0.380392, 1)
+theme_override_font_sizes/font_size = 15
+text = "STRIKE — 7"
+
+[node name="EnemyPortrait3" type="Control" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 936.0
+offset_top = 56.0
+offset_right = 1236.0
+offset_bottom = 306.0
+mouse_filter = 2
+script = ExtResource("3_portrait")
+mode = "enemy"
+
+[node name="EnemyIdentity3" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 936.0
+offset_top = 312.0
+offset_right = 1236.0
+offset_bottom = 366.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="EnemyNameLabel3" type="Label" parent="EnemyIdentity3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "THIRD PARTY"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="EnemyHPRow3" type="HBoxContainer" parent="EnemyIdentity3"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="EnemyHPBar3" type="ProgressBar" parent="EnemyIdentity3/EnemyHPRow3"]
+custom_minimum_size = Vector2(150, 8)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("sb_fill_back")
+theme_override_styles/fill = SubResource("sb_fill")
+max_value = 40.0
+value = 40.0
+show_percentage = false
+
+[node name="EnemyHPText3" type="Label" parent="EnemyIdentity3/EnemyHPRow3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "40 / 40"
+
+[node name="IntentRow3" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 936.0
+offset_top = 370.0
+offset_right = 1236.0
+offset_bottom = 392.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="IntentCaption3" type="Label" parent="IntentRow3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.4, 0.45, 1)
+theme_override_font_sizes/font_size = 11
+text = "INTENT"
+uppercase = true
+
+[node name="IntentLabel3" type="Label" parent="IntentRow3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.278431, 0.380392, 1)
+theme_override_font_sizes/font_size = 15
+text = "STRIKE — 7"
+
 [node name="PlayerPortrait" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 40.0
-offset_top = 372.0
-offset_right = 380.0
-offset_bottom = 640.0
+offset_left = 44.0
+offset_top = 56.0
+offset_right = 284.0
+offset_bottom = 326.0
 mouse_filter = 2
 script = ExtResource("3_portrait")
 mode = "player"
@@ -183,10 +343,10 @@ mode = "player"
 [node name="PlayerIdentity" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 40.0
-offset_top = 648.0
-offset_right = 380.0
-offset_bottom = 706.0
+offset_left = 44.0
+offset_top = 334.0
+offset_right = 284.0
+offset_bottom = 386.0
 mouse_filter = 2
 theme_override_constants/separation = 4
 
@@ -316,7 +476,7 @@ text = "END TURN"
 [node name="HandColumn" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 388.0
+offset_left = 0.0
 offset_top = 500.0
 offset_right = 1116.0
 offset_bottom = 706.0
