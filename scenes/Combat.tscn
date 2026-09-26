@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://scripts/combat_ui.gd" id="1_ctrl"]
 [ext_resource type="Theme" path="res://ui/velvet_theme.tres" id="2_theme"]
 [ext_resource type="Script" path="res://scripts/portrait_frame.gd" id="3_portrait"]
 [ext_resource type="Script" path="res://scripts/backdrop_ornament.gd" id="4_ornament"]
 [ext_resource type="Script" path="res://scripts/stage_ornament.gd" id="5_stage"]
+[ext_resource type="Texture2D" path="res://assets/art/characters/protagonist/signatory_full.png" id="6_signatory"]
 
 [sub_resource type="StyleBoxFlat" id="sb_fill_back"]
 bg_color = Color(0.055, 0.039, 0.063, 1)
@@ -58,6 +59,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("5_stage")
+
+[node name="SignatoryFigure" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 110.0
+offset_right = 664.0
+offset_bottom = 470.0
+mouse_filter = 2
+texture = ExtResource("6_signatory")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TurnLabel" type="Label" parent="."]
 unique_name_in_owner = true

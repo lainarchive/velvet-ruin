@@ -36,7 +36,7 @@ var _player_home: Vector2
 
 const PORTRAIT_TEXTURES := {
 	"%EnemyPortrait": "res://assets/portraits/undersigned.png",
-	"%PlayerPortrait": "res://assets/portraits/protagonist.png",
+	"%PlayerPortrait": "res://assets/art/characters/protagonist/signatory_bust.png",
 }
 
 func _ready() -> void:
