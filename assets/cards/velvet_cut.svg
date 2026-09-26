@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="180" viewBox="0 0 256 180">
+  <!-- VELVET CUT - single diagonal blade cut through layered burgundy velvet.
+       Palette: bg #0e0d12, velvet #4a1224 / #380d1b, cut #f0eff2, crimson #dd3561 -->
+  <rect width="256" height="180" fill="none"/>
+  <!-- layered velvet drapery -->
+  <path d="M8 30 C64 18 118 40 166 32 C196 27 224 32 248 26 L248 172 L8 172 Z" fill="#380d1b"/>
+  <path d="M8 62 C70 48 128 74 184 62 C210 57 232 62 248 58 L248 172 L8 172 Z" fill="#4a1224"/>
+  <path d="M8 100 C76 86 136 112 196 98 C218 93 236 98 248 95 L248 172 L8 172 Z" fill="#5c1630"/>
+  <!-- the cut: clean diagonal slash with pale edge -->
+  <path d="M28 158 L212 22" stroke="#0c0b10" stroke-width="7" stroke-linecap="round"/>
+  <path d="M28 158 L212 22" stroke="#f0eff2" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- crimson spark at the cut's origin -->
+  <path d="M212 22 l10 -4 -6 9 4 6 -10 -3 z" fill="#dd3561"/>
+  <circle cx="219" cy="21" r="2.4" fill="#f0eff2"/>
+</svg>

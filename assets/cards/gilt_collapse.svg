@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="180" viewBox="0 0 256 180">
+  <!-- GILT COLLAPSE - gilded arch cracking apart, crimson light through the fracture.
+       Palette: bg #0e0d12, gilt #a97f3c / #6b4d22, crack #dd3561 / #f0eff2 -->
+  <rect width="256" height="180" fill="none"/>
+  <!-- faint gilt halo behind the arch -->
+  <circle cx="128" cy="86" r="66" fill="none" stroke="#a97f3c" stroke-opacity="0.14" stroke-width="10"/>
+  <!-- ornate arch: two mirrored pillars + crown -->
+  <path d="M60 164 L60 84 C60 44 96 22 128 22 C160 22 196 44 196 84 L196 164" fill="none" stroke="#a97f3c" stroke-width="7"/>
+  <path d="M74 164 L74 88 C74 56 100 36 128 36 C156 36 182 56 182 88 L182 164" fill="none" stroke="#6b4d22" stroke-width="4"/>
+  <!-- crown finial + plinth marks -->
+  <circle cx="128" cy="16" r="5" fill="#a97f3c"/>
+  <path d="M48 164 L92 164 M164 164 L208 164" stroke="#a97f3c" stroke-width="5"/>
+  <!-- central fracture: jagged split with crimson light -->
+  <path d="M128 36 L118 62 L134 78 L116 102 L138 124 L120 148 L132 164" fill="none" stroke="#0c0b10" stroke-width="8"/>
+  <path d="M128 36 L118 62 L134 78 L116 102 L138 124 L120 148 L132 164" fill="none" stroke="#dd3561" stroke-width="3.4"/>
+  <path d="M128 60 L124 100 L130 140" fill="none" stroke="#f0eff2" stroke-width="1.3" stroke-opacity="0.85"/>
+  <!-- falling gilt shards -->
+  <path d="M96 112 l7 -10 5 9 -8 7 z" fill="#a97f3c"/>
+  <path d="M158 96 l8 -7 4 9 -9 5 z" fill="#6b4d22"/>
+  <path d="M150 136 l6 -8 5 7 -8 6 z" fill="#a97f3c" fill-opacity="0.8"/>
+</svg>

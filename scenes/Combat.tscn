@@ -1,0 +1,381 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/combat_ui.gd" id="1_ctrl"]
+[ext_resource type="Theme" path="res://ui/velvet_theme.tres" id="2_theme"]
+[ext_resource type="Script" path="res://scripts/portrait_frame.gd" id="3_portrait"]
+[ext_resource type="Script" path="res://scripts/backdrop_ornament.gd" id="4_ornament"]
+[ext_resource type="Script" path="res://scripts/stage_ornament.gd" id="5_stage"]
+
+[sub_resource type="StyleBoxFlat" id="sb_fill_back"]
+bg_color = Color(0.055, 0.039, 0.063, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.298, 0.22, 0.278, 0.85)
+
+[sub_resource type="StyleBoxFlat" id="sb_fill"]
+bg_color = Color(0.867255, 0.208431, 0.31, 1)
+shadow_color = Color(0.867255, 0.208431, 0.31, 0.4)
+shadow_size = 4
+
+[node name="Combat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_ctrl")
+
+[node name="BackdropFill" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.024, 0.016, 0.035, 1)
+
+[node name="EdgeOrnament" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_ornament")
+
+[node name="Stage" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_stage")
+
+[node name="TurnLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_right = 180.0
+offset_top = 8.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.937255, 0.278431, 0.380392, 1)
+theme_override_font_sizes/font_size = 18
+text = "TURN 1 — YOUR MOVE"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="IntentRow" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 830.0
+offset_top = 444.0
+offset_right = 1150.0
+offset_bottom = 468.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="IntentCaption" type="Label" parent="IntentRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.4, 0.45, 1)
+theme_override_font_sizes/font_size = 11
+text = "INTENT"
+uppercase = true
+
+[node name="IntentLabel" type="Label" parent="IntentRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.278431, 0.380392, 1)
+theme_override_font_sizes/font_size = 15
+text = "STRIKE — 7"
+
+[node name="EnemyPortrait" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 830.0
+offset_top = 66.0
+offset_right = 1150.0
+offset_bottom = 376.0
+mouse_filter = 2
+script = ExtResource("3_portrait")
+mode = "enemy"
+
+[node name="EnemyIdentity" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 830.0
+offset_top = 384.0
+offset_right = 1150.0
+offset_bottom = 436.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="EnemyNameLabel" type="Label" parent="EnemyIdentity"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "THE UNDERSIGNED"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="EnemyHPRow" type="HBoxContainer" parent="EnemyIdentity"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="EnemyHPBar" type="ProgressBar" parent="EnemyIdentity/EnemyHPRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 8)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("sb_fill_back")
+theme_override_styles/fill = SubResource("sb_fill")
+max_value = 40.0
+value = 40.0
+show_percentage = false
+
+[node name="EnemyHPText" type="Label" parent="EnemyIdentity/EnemyHPRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 14
+text = "40 / 40"
+
+[node name="PlayerPortrait" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 372.0
+offset_right = 380.0
+offset_bottom = 640.0
+mouse_filter = 2
+script = ExtResource("3_portrait")
+mode = "player"
+
+[node name="PlayerIdentity" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 648.0
+offset_right = 380.0
+offset_bottom = 706.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="PlayerNameLabel" type="Label" parent="PlayerIdentity"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 17
+text = "THE SIGNATORY"
+uppercase = true
+
+[node name="PlayerStateRow" type="HBoxContainer" parent="PlayerIdentity"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="PlayerHPBar" type="ProgressBar" parent="PlayerIdentity/PlayerStateRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 8)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("sb_fill_back")
+theme_override_styles/fill = SubResource("sb_fill")
+max_value = 80.0
+value = 80.0
+show_percentage = false
+
+[node name="PlayerHPText" type="Label" parent="PlayerIdentity/PlayerStateRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 13
+text = "80 / 80"
+
+[node name="BlockLabel" type="Label" parent="PlayerIdentity/PlayerStateRow"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.584314, 0.4, 0.857861, 1)
+theme_override_font_sizes/font_size = 13
+text = ""
+uppercase = true
+
+[node name="SideColumn" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1118.0
+offset_top = 520.0
+offset_right = 1244.0
+offset_bottom = 704.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="EnergyChip" type="VBoxContainer" parent="SideColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="EnergyNumber" type="Label" parent="SideColumn/EnergyChip"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.584314, 0.4, 0.857861, 1)
+theme_override_font_sizes/font_size = 30
+text = "3 / 3"
+horizontal_alignment = 1
+
+[node name="EnergyCaption" type="Label" parent="SideColumn/EnergyChip"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.4, 0.45, 1)
+theme_override_font_sizes/font_size = 10
+text = "ENERGY"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="DrawBlock" type="VBoxContainer" parent="SideColumn"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="DrawCount" type="Label" parent="SideColumn/DrawBlock"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.74, 0.78, 1)
+theme_override_font_sizes/font_size = 14
+text = "5"
+horizontal_alignment = 1
+
+[node name="DrawCaption" type="Label" parent="SideColumn/DrawBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.4, 0.45, 1)
+theme_override_font_sizes/font_size = 10
+text = "DRAW"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="DiscardBlock" type="VBoxContainer" parent="SideColumn"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="DiscardCount" type="Label" parent="SideColumn/DiscardBlock"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.74, 0.78, 1)
+theme_override_font_sizes/font_size = 14
+text = "0"
+horizontal_alignment = 1
+
+[node name="DiscardCaption" type="Label" parent="SideColumn/DiscardBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.4, 0.45, 1)
+theme_override_font_sizes/font_size = 10
+text = "DISCARD"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="EndTurnButton" type="Button" parent="SideColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "END TURN"
+
+[node name="HandColumn" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 388.0
+offset_top = 500.0
+offset_right = 1116.0
+offset_bottom = 706.0
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="HandClip" type="Control" parent="HandColumn"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 196)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Hand" type="HBoxContainer" parent="HandColumn/HandClip"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+theme_override_constants/separation = 6
+
+[node name="OverlayDim" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0.0196078, 0.0117647, 0.0235294, 0.88)
+
+[node name="OverlayCenter" type="CenterContainer" parent="OverlayDim"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OverlayBox" type="VBoxContainer" parent="OverlayDim/OverlayCenter"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="OutcomeTitle" type="Label" parent="OverlayDim/OverlayCenter/OverlayBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.278431, 0.380392, 1)
+theme_override_font_sizes/font_size = 54
+text = "RUIN"
+horizontal_alignment = 1
+
+[node name="OutcomeDetail" type="Label" parent="OverlayDim/OverlayCenter/OverlayBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="OverlayDim/OverlayCenter/OverlayBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ONCE MORE — RESTART COMBAT"

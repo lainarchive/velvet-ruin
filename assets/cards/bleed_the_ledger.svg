@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="180" viewBox="0 0 256 180">
+  <!-- BLEED THE LEDGER - open contract ledger, ornate seal, crimson stain spreading.
+       Palette: page #efe9dd (ivory paper), binding #0c0b10, seal #8c1d3d, stain #dd3561 -->
+  <rect width="256" height="180" fill="none"/>
+  <!-- open ledger: two leaning pages -->
+  <path d="M28 44 L122 54 L122 150 L28 140 Z" fill="#efe9dd"/>
+  <path d="M228 44 L134 54 L134 150 L228 140 Z" fill="#e6dfd1"/>
+  <!-- center binding shadow -->
+  <path d="M122 54 L134 54 L134 150 L122 150 Z" fill="#0c0b10"/>
+  <!-- fine-print rules (fading toward the stain) -->
+  <path d="M40 66 L112 74 M40 80 L112 88 M40 94 L110 102 M40 108 L108 116" stroke="#6d6558" stroke-width="1.6"/>
+  <path d="M146 74 L216 66 M146 88 L218 80 M148 102 L216 94" stroke="#6d6558" stroke-width="1.6"/>
+  <!-- crimson stain: spreading blot with tendrils across the right page -->
+  <path d="M168 92 C186 84 204 94 210 110 C216 128 200 142 184 140 C166 138 156 122 160 106 C162 98 164 95 168 92 Z" fill="#dd3561" fill-opacity="0.85"/>
+  <path d="M160 106 C150 112 146 122 148 132" fill="none" stroke="#dd3561" stroke-width="2.4" stroke-opacity="0.7"/>
+  <path d="M208 112 C218 114 224 122 224 130" fill="none" stroke="#dd3561" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="152" cy="120" r="2.6" fill="#dd3561"/>
+  <circle cx="222" cy="134" r="2" fill="#dd3561"/>
+  <!-- drip falling off the page edge -->
+  <path d="M188 142 C188 152 184 156 186 166" fill="none" stroke="#dd3561" stroke-width="2.6" stroke-opacity="0.8"/>
+  <circle cx="186.5" cy="169" r="2.4" fill="#dd3561"/>
+  <!-- ornate wax seal on the left page -->
+  <circle cx="76" cy="120" r="15" fill="#8c1d3d"/>
+  <circle cx="76" cy="120" r="11" fill="none" stroke="#f0eff2" stroke-width="1" stroke-opacity="0.5"/>
+  <path d="M76 112 L79 118 L86 118 L80 122 L83 129 L76 125 L69 129 L72 122 L66 118 L73 118 Z" fill="#f0eff2" fill-opacity="0.85"/>
+  <path d="M64 132 C60 138 58 142 60 146" fill="none" stroke="#8c1d3d" stroke-width="2.4"/>
+</svg>

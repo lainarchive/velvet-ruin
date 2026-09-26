@@ -1,0 +1,5 @@
+# Godot import cache
+.godot/
+
+# Local toolchain (engine binary downloaded for headless verification)
+.tools/

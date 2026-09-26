@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="180" viewBox="0 0 256 180">
+  <!-- SMOKE &amp; VENEER - gloved hand drawing a ribbon of black smoke through a crimson thread.
+       Palette: bg #0e0d12, smoke #17151d / #221e2a, thread #dd3561, glove #0c0b10, ivory #f0eff2 -->
+  <rect width="256" height="180" fill="none"/>
+  <!-- crimson thread: taut line across the composition -->
+  <path d="M16 58 C70 74 150 40 240 62" fill="none" stroke="#dd3561" stroke-width="1.8"/>
+  <circle cx="16" cy="58" r="2.2" fill="#dd3561"/>
+  <circle cx="240" cy="62" r="2.2" fill="#dd3561"/>
+  <!-- ribbon of smoke: layered S-curve woven over/under the thread -->
+  <path d="M60 150 C60 118 120 118 118 92 C117 72 84 74 92 56 C98 43 118 46 116 60" fill="none" stroke="#17151d" stroke-width="13" stroke-linecap="round"/>
+  <path d="M60 150 C60 118 120 118 118 92 C117 72 84 74 92 56 C98 43 118 46 116 60" fill="none" stroke="#221e2a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M74 152 C74 126 128 126 126 100" fill="none" stroke="#17151d" stroke-width="9" stroke-linecap="round" stroke-opacity="0.85"/>
+  <!-- thread passes over the smoke near the crossing -->
+  <path d="M104 61 C120 57 140 55 158 57" fill="none" stroke="#dd3561" stroke-width="1.8"/>
+  <!-- gloved hand holding the smoke tail -->
+  <path d="M28 168 C26 146 40 132 62 132 C84 132 96 144 96 156 C96 164 88 168 78 168 Z" fill="#0c0b10"/>
+  <path d="M62 132 C74 128 88 132 94 142" fill="none" stroke="#f0eff2" stroke-width="1.2" stroke-opacity="0.5"/>
+  <path d="M96 152 C106 148 112 140 114 130" fill="none" stroke="#0c0b10" stroke-width="5" stroke-linecap="round"/>
+  <path d="M96 152 C106 148 112 140 114 130" fill="none" stroke="#f0eff2" stroke-width="1" stroke-opacity="0.6"/>
+  <!-- cuff clasp -->
+  <circle cx="46" cy="158" r="2.6" fill="#dd3561"/>
+</svg>

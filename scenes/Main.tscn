@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Theme" path="res://ui/velvet_theme.tres" id="2_theme"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_main")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0392157, 0.0313726, 0.0431373, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TitleBlock" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Overline" type="Label" parent="Center/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.352941, 0.298039, 0.352941, 1)
+theme_override_font_sizes/font_size = 13
+text = "A DECKBUILDER OF DEBTS UNPAID"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Center/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.937255, 0.278431, 0.380392, 1)
+theme_override_font_sizes/font_size = 64
+text = "VELVET//RUIN"
+horizontal_alignment = 1
+
+[node name="Rule" type="ColorRect" parent="Center/TitleBlock"]
+custom_minimum_size = Vector2(360, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.298039, 0.219608, 0.278431, 1)
+
+[node name="Subtitle" type="Label" parent="Center/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.713726, 0.639216, 0.705882, 1)
+theme_override_font_sizes/font_size = 15
+text = "MILESTONE 1A — COMBAT FOUNDATION"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/TitleBlock"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="EnterButton" type="Button" parent="Center/TitleBlock"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ENTER THE CONTRACT"
